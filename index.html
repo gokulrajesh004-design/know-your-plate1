@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Know Your Plate — Wellness@Work by SmartQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<body>
+
+<div class="reaction-pop" id="reaction-pop"></div>
+
+<!-- ══ INTRO ══ -->
+<div id="screen-intro" class="screen active">
+  <div class="intro-circle1"></div>
+  <div class="intro-circle2"></div>
+  <div class="intro-inner">
+    <div class="intro-pill">
+      <span style="width:6px;height:6px;background:var(--y);border-radius:50%;display:inline-block"></span>
+      Wellness@Work by SmartQ
+    </div>
+    <div class="intro-plate">🍽️</div>
+    <h1 class="intro-h1">Know Your<br><em>Plate</em></h1>
+    <p class="intro-sub">Just had a meal? Tell us what was on your plate and we'll show you how nutritious it really was.</p>
+
+    <div class="intro-how">
+      <div class="intro-how-title">How it works</div>
+      <div class="intro-how-step">
+        <div class="intro-how-num">1</div>
+        <div class="intro-how-text">Answer 7 questions about what you just ate</div>
+      </div>
+      <div class="intro-how-step">
+        <div class="intro-how-num">2</div>
+        <div class="intro-how-text">We compare your plate to the ideal portion</div>
+      </div>
+      <div class="intro-how-step">
+        <div class="intro-how-num">3</div>
+        <div class="intro-how-text">Get your Nutrition Score and personalised tips</div>
+      </div>
+    </div>
+
+    <button class="btn-start" onclick="startGame()">Check my plate →</button>
+    <p class="intro-note">Takes under 2 minutes · No right or wrong answers</p>
+  </div>
+</div>
+
+<!-- ══ GAME ══ -->
+<div id="screen-game" class="screen">
+  <div class="progress-wrap">
+    <div class="progress-top">
+      <div class="progress-logo">Know Your Plate <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--b);opacity:0.6;margin-left:4px;text-transform:uppercase;">by SmartQ</span></div>
+      <div class="progress-pip-row" id="progress-pips"></div>
+    </div>
+    <div class="progress-sublabel" id="progress-label">Question 1 of 7</div>
+  </div>
+  <div class="q-area" id="question-area"></div>
+  <div class="game-bottom">
+    <button class="btn-next" id="btn-next" onclick="nextQuestion()">Next →</button>
+  </div>
+</div>
+
+<!-- ══ SCORE ══ -->
+<div id="screen-score" class="screen">
+  <div class="score-hero">
+    <div class="score-confetti" id="score-confetti">🌟 🍽️ 🌟</div>
+    <span class="score-badge-emoji" id="score-badge-emoji">🏆</span>
+    <div>
+      <span class="score-number" id="score-number">0</span>
+      <span class="score-outof">/100</span>
+    </div>
+    <div class="score-badge-name" id="score-badge-name">Balanced Plate</div>
+    <div class="score-badge-line" id="score-badge-line">Your meal was well balanced.</div>
+  </div>
+
+  <div class="score-bar-section">
+    <div class="score-bar-labels">
+      <span>Needs work</span><span>Developing</span><span>Good</span><span>Excellent</span>
+    </div>
+    <div class="score-bar-track">
+      <div class="score-bar-fill" id="score-bar-fill"></div>
+    </div>
+  </div>
+
+  <div class="result-section" style="animation-delay:0.8s">
+    <div class="result-section-title">Portion Profile</div>
+    <div id="portion-profile"></div>
+  </div>
+
+  <div class="result-section" style="animation-delay:0.9s">
+    <div class="result-section-title">Tomorrow's Verdict</div>
+    <div id="takeaways"></div>
+  </div>
+
+  <div class="score-cta">
+    <button class="btn-share" onclick="shareResult()">📲 Share My Score</button>
+    <button class="btn-retry" onclick="resetGame()">Check another plate</button>
+  </div>
+  <div class="score-footer">Wellness@Work by SmartQ · World Health Day 2026</div>
+</div>
+
+<!-- ══ SHARE MODAL ══ -->
+<div class="share-overlay" id="share-overlay" onclick="closeShare(event)">
+  <div class="share-sheet" id="share-sheet">
+    <div class="share-handle"></div>
+    <div class="share-card" id="share-card">
+      <div class="share-card-label">Wellness@Work by SmartQ</div>
+      <div class="share-card-score" id="share-card-score">--<span>/100</span></div>
+      <div class="share-card-badge" id="share-card-badge">—</div>
+      <div class="share-card-tag">#WorldHealthDay2026 · Know Your Plate</div>
+    </div>
+    <canvas id="share-canvas" style="display:none"></canvas>
+    <div class="share-options">
+      <button class="share-btn share-btn-image" id="btn-save-image" onclick="shareImage()">🖼️ Save as image</button>
+      <button class="share-btn share-btn-copy" onclick="copyScore()">📋 Copy text to clipboard</button>
+      <div class="share-copied" id="share-copied">✅ Copied! Paste it on Slack or Teams.</div>
+      <button class="share-btn share-btn-close" onclick="closeShare()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
